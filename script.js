@@ -104,9 +104,17 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
 });
 
 // Toggle cart sidebar
-cartIconElem.addEventListener('click', function() {
+cartIconElem.addEventListener('click', function () {
     cartSidebarElem.classList.toggle('open');
+    document.body.classList.toggle('no-scroll', cartSidebarElem.classList.contains('open'));
 });
+
+// Close sidebar when 'X' button is clicked
+document.querySelector('.close-btn').addEventListener('click', function () {
+    cartSidebarElem.classList.remove('open');
+    document.body.classList.remove('no-scroll');
+});
+
 
 // Checkout button
 document.querySelector('.checkout-btn').addEventListener('click', function() {
@@ -116,10 +124,6 @@ document.querySelector('.checkout-btn').addEventListener('click', function() {
     renderCartItems();
 });
 
-// Close sidebar when 'X' button is clicked
-document.querySelector('.close-btn').addEventListener('click', function () {
-    document.querySelector('.cart-sidebar').classList.remove('open');
-});
 
 // Show the "Add to Cart" button on hover
 document.querySelectorAll('.product').forEach(function(product) {
